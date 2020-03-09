@@ -3,16 +3,17 @@ import PropTypes from "prop-types";
 import { Form } from "react-bootstrap";
 
 export function SearchBar(props) {
-  const { value, isChecked, onInputChange, onCheckboxChange } = props;
+  const { value, isChecked, onInputChange, onCheckboxChange, recipesLength } = props;
   return (
     <Form>
       <Form.Group controlId="formSearch">
         <Form.Label>Search recipes</Form.Label>
+        <p>Nájdených {recipesLength} receptov.</p>
         <Form.Control
           type="text"
           value={value}
           onChange={onInputChange}
-          placeholder="Start typing recipe name"
+          placeholder="Zadajte názov receptu"
         ></Form.Control>
       </Form.Group>
       <Form.Group controlId="formTime">
@@ -20,7 +21,7 @@ export function SearchBar(props) {
           type="checkbox"
           checked={isChecked}
           onChange={onCheckboxChange}
-          label="Ready in less than 30 minutes"
+          label="Čas prípravy do 30 minút"
         ></Form.Check>
       </Form.Group>
     </Form>

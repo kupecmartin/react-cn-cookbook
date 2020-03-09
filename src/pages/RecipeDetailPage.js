@@ -41,14 +41,14 @@ export class RecipeDetailPage extends Component {
 
 
   render() {
-    const {isLoading, recipe, error} = this.state;
+    const {isLoading, recipe, error, isEditable} = this.state;
 
     let showContent = (<RecipeDetailView
       isLoading={isLoading}
       recipe={recipe}
       error={error}/>);
 
-    if (this.state.isEditable) {
+    if (isEditable) {
       showContent = (
         <RecipeDetailEdit/>
       );

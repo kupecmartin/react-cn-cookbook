@@ -9,6 +9,7 @@ import { IngredientsListEdit } from "../RecipeDetail/EditComponents/IngredientsL
 
 export function RecipeDetailEdit(props) {
 
+
   return (
     <Form>
       <Form.Group controlId="exampleForm.ControlInput1">

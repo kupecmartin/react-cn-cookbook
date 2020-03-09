@@ -10,9 +10,19 @@ export function DirectionsListView(props) {
   // console.log(directions);
 
 
-  const directionList = directions.split('\n').map((ch,index) => {
-    return <div character={ch} key={index}>{index + 1 + "." + ch.substring(ch.length,ch.indexOf(' '))}</div>;
-  });
+ // const directionList = directions.split('\n').map((ch,index) => {
+ //    return <div character={ch} key={index}>{index + 1 + "." + ch.substring(ch.length,ch.indexOf(' '))}</div>;
+ //  });
+
+  const directionList = (
+    <ol>
+      {directions.split('\n').map((ch,index) => {
+      return <li key={index}>{ch.substring(ch.length,ch.indexOf(' '))}</li>;
+    })}
+    </ol>
+
+  );
+
 
   // console.log(typeof directionList);
   // console.log(directions);
@@ -32,3 +42,5 @@ DirectionsListView.propTypes = {
   recipeOrders: PropTypes.object,
 
 };
+
+

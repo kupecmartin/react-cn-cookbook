@@ -20,7 +20,7 @@ export function RecipeList(props) {
   return (
     <Row>
       {recipes.map(recipe => {
-        const {_id, title, preparationTime, slug, sideDish, ingredients} = recipe;
+        const {_id, title, preparationTime, slug, sideDish} = recipe;
 
         return (
           <RecipeListItem
@@ -29,7 +29,6 @@ export function RecipeList(props) {
             time={preparationTime}
             slug={slug}
             sideDish={sideDish}
-            ingredients={ingredients}
           />
         );
       })}

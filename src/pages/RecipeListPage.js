@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 import { api } from "../api";
 
@@ -12,7 +12,9 @@ export class RecipeListPage extends Component {
     isLoading: false,
     error: null,
     searchString: "",
-    isChecked: false
+    isChecked: false,
+    currentPage: (1),
+    recipesPerPage: (10),
   };
 
 
@@ -31,8 +33,6 @@ export class RecipeListPage extends Component {
     });
   }
 
-
-
   handleInputChange = event => {
     this.setState({
       searchString: event.target.value
@@ -44,6 +44,7 @@ export class RecipeListPage extends Component {
       isChecked: event.target.checked
     });
   };
+
 
   filterRecipes = recipe => {
     const { searchString, isChecked } = this.state;
@@ -57,7 +58,7 @@ export class RecipeListPage extends Component {
 
   render() {
     const { recipes, isLoading, error, searchString, isChecked } = this.state;
-    const filteredRecipes = recipes.filter(this.filterRecipes);
+    const filteredRecipes = recipes && recipes.filter(this.filterRecipes);
 
     return (
       <Container>
@@ -67,6 +68,7 @@ export class RecipeListPage extends Component {
           isChecked={isChecked}
           onInputChange={this.handleInputChange}
           onCheckboxChange={this.handleCheckboxChange}
+          recipesLength={filteredRecipes.length}
         />
         <RecipeList
           recipes={filteredRecipes}
